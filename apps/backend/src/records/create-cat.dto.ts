@@ -1,8 +1,8 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsDate, IsInt, IsString } from 'class-validator';
 
 export class CreateCatDto {
-  @IsString()
-  date: string;
+  @IsDate()
+  date: Date;
 
   @IsString()
   clockIn: string;
@@ -12,4 +12,7 @@ export class CreateCatDto {
 
   @IsInt()
   totalHours: number;
+
+  @IsString()
+  employeeId: string;
 }

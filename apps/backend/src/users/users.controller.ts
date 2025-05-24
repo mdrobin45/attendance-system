@@ -6,7 +6,20 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post('create')
-  create(@Body() body: { email: string; password: string }) {
-    return this.usersService.createEmployee(body.email, body.password);
+  create(
+    @Body()
+    body: {
+      email: string;
+      password: string;
+      name: string;
+      department: string;
+    },
+  ) {
+    return this.usersService.createEmployee(
+      body.email,
+      body.password,
+      body.name,
+      body.department,
+    );
   }
 }

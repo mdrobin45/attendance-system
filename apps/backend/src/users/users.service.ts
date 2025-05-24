@@ -6,10 +6,20 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  async createEmployee(email: string, password: string) {
+  async createEmployee(
+    email: string,
+    password: string,
+    name: string,
+    department: string,
+  ) {
     const hash = await bcrypt.hash(password, 10);
-    return this.prisma.user.create({
-      data: { email, password: hash, role: 'EMPLOYEE' },
+    return this.prisma.employee.create({
+      data: {
+        email,
+        password: hash,
+        name,
+        department,
+      },
     });
   }
 }
